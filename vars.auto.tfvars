@@ -1,0 +1,5 @@
+profile       = "default"
+region        = "us-east-1"
+my-vpc_cidr   = "10.0.0.0/16"
+instance_type = "t2.nano"
+ami           = "ami-01893222c83843146"
