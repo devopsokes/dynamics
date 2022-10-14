@@ -48,7 +48,8 @@ resource "aws_security_group" "Apache" {
     content {
       description = ingress.value.description
       from_port   = ingress.value.port
-      to_port     = ingress.value.port 
+      to_port     = ingress.value.port
+      protocol = ingress.value.protocol
     }
   }
 }
