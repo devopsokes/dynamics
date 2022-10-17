@@ -33,10 +33,18 @@ locals {
     protocol    = "tcp"
     },
     {
+      port = 22
+      description = "port 22"
+      protocol = "tcp"
+
+    },
+    {
       port        = 80
       description = "port 80"
       protocol    = "tcp"
-  }]
+  }
+  
+  ]
 }
 
 resource "aws_security_group" "Apache" {
