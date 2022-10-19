@@ -61,4 +61,7 @@ resource "aws_security_group" "Apache" {
     }
   }
 }
-
+output "my_security_group" {
+  value = "aws_security_group.Apache1"
+  
+}
