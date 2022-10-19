@@ -27,17 +27,20 @@ resource "aws_instance" "my_server" {
   instance_type = local.instance_type
 }
 locals {
+  ## Enabling port HTTPS
   ingress_rules = [{
     port        = 443
     description = "port 443"
     protocol    = "tcp"
     },
+    ## Enabing port SSH
     {
       port = 22
       description = "port 22"
       protocol = "tcp"
 
     },
+    ## Enabling port HTTP
     {
       port        = 80
       description = "port 80"
@@ -46,11 +49,12 @@ locals {
   
   ]
 }
-
+## Security Group
 resource "aws_security_group" "Apache" {
   name        = "apache_sg"
   description = "Allow TLS inbound traffic"
   vpc_id      = aws_vpc.my-vpc.id
+  ## Dynamic Rule Block
   dynamic "ingress" {
     for_each = local.ingress_rules
     content {
@@ -61,6 +65,7 @@ resource "aws_security_group" "Apache" {
     }
   }
 }
+## Output of Security Group
 output "my_security_group" {
   value = "aws_security_group.Apache1"
   
